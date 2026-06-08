@@ -2,6 +2,8 @@
 
 Aplicación de escritorio con interfaz gráfica para predecir la propensión a padecer caries dental usando modelos de Machine Learning entrenados con scikit-learn.
 
+![Image_alt](https://github.com/FedeJGM/Machine-Learning/blob/262c80cfbe254a098d163a7f34ce9f1ec688b9b1/assets/caries_dental.png)
+
 Machine-Learning incluye:
 - Un dataset incorporado (dataset_caries.csv).
 - Un script con interfaz gráfica (Tkinter) que compara varios modelos, selecciona el mejor y permite diagnosticar pacientes mediante inputs clínicos.
