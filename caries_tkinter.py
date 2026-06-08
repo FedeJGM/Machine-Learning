@@ -95,8 +95,8 @@ def formatear_campos_invalidos(campos):
     """
     Recibe una lista de nombres de campos inválidos:
       - 1 campo  → "Edad"
-      - 2 campos → "Edad y Altura"
-      - 3+ campos → "Edad, Altura y Peso"
+      - 2 campos → "Edad y Peso"
+      - 3+ campos → "Edad, Peso y Cintura"
     """
     if len(campos) == 1:
         return campos[0]
@@ -131,16 +131,10 @@ def obtener_diagnostico():
     Valida cada campo numérico individualmente.
     Si hay errores, muestra exactamente qué campos son inválidos.
     """
-    # Mapeo entry → nombre legible del campo
     nombres_campos = {
         edad_entry:               "Edad",
-        altura_entry:             "Altura",
         peso_entry:               "Peso",
         cintura_entry:            "Cintura",
-        vista_izquierda_entry:    "Vista izquierda",
-        vista_derecha_entry:      "Vista derecha",
-        audicion_izquierda_entry: "Audición izquierda",
-        audicion_derecha_entry:   "Audición derecha",
         sistolica_entry:          "Sistólica",
         presion_arterial_entry:   "Presión arterial",
         glucosa_en_ayunas_entry:  "Glucosa",
@@ -175,7 +169,7 @@ def obtener_diagnostico():
         except ValueError:
             campos_invalidos.append(nombre)
 
-    # Si hay campos inválidos → mostrar mensaje específico
+    # Sí hay campos inválidos → mostrar mensaje específico
     if campos_invalidos:
         lista = formatear_campos_invalidos(campos_invalidos)
         messagebox.showerror(
@@ -228,7 +222,7 @@ def salir():
 # ============================
 window = tk.Tk()
 window.title("Sistema Predictivo de Caries Dental")
-window.geometry("1180x820")
+window.geometry("1000x720")
 window.configure(bg="#D6EAF8")
 
 titulo = tk.Label(
@@ -365,22 +359,14 @@ def crear_campo(frame, texto, fila, columna, placeholder=""):
     entry.bind("<FocusOut>", salir_entry)
     return entry
 
-# ============================
-# CAMPOS
-# ============================
 entradas = []
 
 nombre_entry              = crear_campo(datos_frame, "Nombre:",             0,  0, "Ej: Juan Pérez")
 edad_entry                = crear_campo(datos_frame, "Edad:",               1,  0, "18 - 80")
-altura_entry              = crear_campo(datos_frame, "Altura:",             2,  0, "140 - 200")
-peso_entry                = crear_campo(datos_frame, "Peso:",               3,  0, "40 - 150")
-cintura_entry             = crear_campo(datos_frame, "Cintura:",            4,  0, "50 - 130")
-vista_izquierda_entry     = crear_campo(datos_frame, "Vista izquierda:",    5,  0, "0.1 - 2.0")
-vista_derecha_entry       = crear_campo(datos_frame, "Vista derecha:",      6,  0, "0.1 - 2.0")
-audicion_izquierda_entry  = crear_campo(datos_frame, "Audición izquierda:", 7,  0, "1 - 2")
-audicion_derecha_entry    = crear_campo(datos_frame, "Audición derecha:",   8,  0, "1 - 2")
-sistolica_entry           = crear_campo(datos_frame, "Sistólica:",          9,  0, "80 - 200")
-presion_arterial_entry    = crear_campo(datos_frame, "Presión arterial:",   10, 0, "50 - 130")
+peso_entry                = crear_campo(datos_frame, "Peso:",               2,  0, "40 - 150")
+cintura_entry             = crear_campo(datos_frame, "Cintura:",            3,  0, "50 - 130")
+sistolica_entry           = crear_campo(datos_frame, "Sistólica:",          4,  0, "80 - 200")
+presion_arterial_entry    = crear_campo(datos_frame, "Presión arterial:",   5,  0, "50 - 130")
 
 glucosa_en_ayunas_entry   = crear_campo(datos_frame, "Glucosa:",            0,  2, "70 - 200")
 colesterol_entry          = crear_campo(datos_frame, "Colesterol:",         1,  2, "100 - 350")
@@ -395,9 +381,8 @@ alt_entry                 = crear_campo(datos_frame, "ALT:",                9,  
 gtp_entry                 = crear_campo(datos_frame, "GTP:",                10, 2, "10 - 300")
 
 entradas = [
-    nombre_entry, edad_entry, altura_entry, peso_entry, cintura_entry,
-    vista_izquierda_entry, vista_derecha_entry, audicion_izquierda_entry,
-    audicion_derecha_entry, sistolica_entry, presion_arterial_entry,
+    nombre_entry, edad_entry, peso_entry, cintura_entry,
+    sistolica_entry, presion_arterial_entry,
     glucosa_en_ayunas_entry, colesterol_entry, triglicerido_entry,
     hdl_entry, ldl_entry, hemoglobina_entry, proteina_urinaria_entry,
     creatinina_serica_entry, ast_entry, alt_entry, gtp_entry
